@@ -1,15 +1,18 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3.6
+# -*- coding: utf-8 -*-
 
 import os
 import simplejson
 
-def load(location, option):
+
+def load(location: str, option: bool) -> object:
     '''Return a cucudb object. location is the path to the json file.'''
     return cucudb(location, option)
 
+
 class cucudb(object):
 
-    def __init__(self, location, option):
+    def __init__(self, location: str, option: bool):
         '''Creates a database object and loads the data from the location path.
         If the file does not exist it will be created on the first update.'''
         self.load(location, option)
@@ -25,12 +28,12 @@ class cucudb(object):
             self.db = {}
         return True
 
-    def dump(self):
+    def dump(self) -> bool:
         '''Force dump memory db to file.'''
         self._dumpdb(True)
         return True
 
-    def set(self, key, value):
+    def set(self, key, value) -> bool:
         '''Set the (string,int,whatever) value of a key'''
         self.db[key] = value
         self._dumpdb(self.fsave)
@@ -152,16 +155,16 @@ class cucudb(object):
         '''Return all the values for a dict'''
         return self.db[name].values()
 
-    def dexists(self, name, key):
+    def dexists(self, name, key) -> bool:
         '''Determine if a key exists or not'''
         if self.db[name][key] is not None:
-            return 1
+            return True
         else:
-            return 0
+            return False
 
-    def deldb(self):
+    def deldb(self) -> bool:
         '''Delete everything from the database'''
-        self.db= {}
+        self.db = {}
         self._dumpdb(self.fsave)
         return True
 
@@ -169,7 +172,7 @@ class cucudb(object):
         '''Load or reload the json info from the file'''
         self.db = simplejson.load(open(self.loco, 'rb'))
 
-    def _dumpdb(self, forced):
+    def _dumpdb(self, forced: bool):
         '''Write/save the json dump into the file'''
         if forced:
-           simplejson.dump(self.db, open(self.loco, 'wt'))
+            simplejson.dump(self.db, open(self.loco, 'wt'))
