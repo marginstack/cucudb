@@ -1,58 +1,25 @@
-"""
-pickleDB
---------
+from os import path
+from setuptools import setup, find_packages
+from codecs import open
 
-pickleDB is lightweight, fast, and simple database based on Python's own
-json module. And it's BSD licensed!
-
-pickleDB is Fun
-```````````````
-
-::
-
-    >>> import pickledb
-
-    >>> db = pickledb.load('test.db', False)
-
-    >>> db.set('key', 'value')
-
-    >>> db.get('key')
-    'value'
-
-    >>> db.dump()
-    True
+here = path.abspath(path.dirname(__file__))
 
 
-And Easy to Install
-```````````````````
+with open(path.join(here, 'README.md'), encoding='utf-8') as f:
+    long_description = f.read()
 
-::
-
-    $ pip install pickledb
-
-Links
-`````
-
-* `website <http://packages.python.org/pickleDB/>`_
-* `documentation <http://packages.python.org/pickleDB/commands.html>`_
-* `bitbucket repo <https://bitbucket.org/patx/pickledb>`_
-
-"""
-
-from distutils.core import setup
-
-setup(name = "pickleDB",
-    version="0.6.2",
+setup(
+    name="cucudb",
+    version="0.0.1",
     description="A lightweight and simple database using simplejson.",
-    author="Harrison Erd",
-    author_email="patx44@gmail.com",
-    license="three-clause BSD",
-    url="http://bitbucket.org/patx/pickledb",
-    long_description=__doc__,
-    classifiers = [
+    author="Mattia Terenzi",
+    author_email="m.terenzi92@gmail.com",
+    url="https://github.com/marginstack/cucudb",
+    long_description=long_description,
+    classifiers=[
         "Programming Language :: Python",
-        "License :: OSI Approved :: BSD License",
+        "License :: OSI Approved :: MIT License",
         "Intended Audience :: Developers",
-        "Topic :: Database" ],
-    py_modules=['pickledb'],
+        "Topic :: Database"],
+    py_modules=['cucudb'],
     install_requires=['simplejson'])
