@@ -22,4 +22,4 @@ setup(
         "Intended Audience :: Developers",
         "Topic :: Database"],
     py_modules=['cucudb'],
-    install_requires=['simplejson'])
+    install_requires=['ujson'])

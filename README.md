@@ -1,6 +1,6 @@
 # cucudb
 
-cucudb is lightweight, fast, and simple database based on the [simplejson](https://pypi.python.org/pypi/simplejson/)
+cucudb is lightweight, fast, and simple database based on the [ujson](https://pypi.python.org/pypi/ujson/)
 
 ### How to use
 
