@@ -22,7 +22,7 @@ class Cucudb:
         if os.path.exists(location):
             self._loaddb()
         else:
-            self.db =
+            self.db = {}
         return True
 
     def dump(self) -> bool:
